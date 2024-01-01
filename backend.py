@@ -1,8 +1,10 @@
 import openai
+import keyring
+
 
 class Chatbot:
     def __init__(self):
-        openai.api_key = "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"
+        openai.api_key = keyring.get_password("OpenAI_Key", "OpenAI_Key")
 
     def get_response(self, user_input):
         response = openai.completions.create(
